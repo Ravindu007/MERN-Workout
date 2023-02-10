@@ -28,7 +28,7 @@ const WorkoutForm = () => {
         body:JSON.stringify(workout),
         headers:{
           'Content-Type':'application/json',
-          'Authorization': `Bearer ${user.token}`
+          'Authorization': `${user.email} ${user.token}`
         }
       })
 

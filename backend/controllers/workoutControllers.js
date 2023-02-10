@@ -7,8 +7,8 @@ const workoutModel = require("../models/workoutModel")
 //get all workouts
 const getWorkouts = async (req, res) =>{
   try {
-    const user_id = req.user._id
-    const allworkouts = await workoutModel.find({user_id}).sort({createdAt:-1})
+    //const user_id = req.user._id
+    const allworkouts = await workoutModel.find({}).sort({createdAt:-1})
     res.status(200).json(allworkouts)
   } catch (error) {
     res.status(400).json({error:error.message})
@@ -39,9 +39,10 @@ const getaSingleWorkout = async(req, res)=>{
 //create a workout
 const createWorkout = async (req, res) => {
   const {title, reps, load} = req.body
+  const email = req.email
   try {
     const user_id = req.user._id
-    const workout = await workoutModel.create({title, reps, load, user_id})
+    const workout = await workoutModel.create({title, reps, load, user_id, email})
     res.status(200).json(workout)
   } catch (error) {
     res.status(400).json({error:error.message})

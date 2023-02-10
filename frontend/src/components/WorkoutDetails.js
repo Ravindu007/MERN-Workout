@@ -83,9 +83,10 @@ const WorkoutDetails = ({workout}, props) => {
           <h4>{workout.title}</h4>
           <p><strong>Reps:</strong>{workout.reps}</p>
           <p><strong>Load(Kg):</strong>{workout.load}</p>
-          <p>{formatDistanceToNow(new Date(workout.createdAt), {addSuffix:true})}</p>
-          <p>{formatDistanceToNow(new Date(workout.updatedAt), {addSuffix:true})}</p>
-          {!props.readOnly && (
+          <p><strong>Created At:</strong>{formatDistanceToNow(new Date(workout.createdAt), {addSuffix:true})}</p>
+          <p><strong>Updated at:</strong>{formatDistanceToNow(new Date(workout.updatedAt), {addSuffix:true})}</p>
+          <p><strong>created by:</strong>{workout.email}</p>
+          {(user.email === workout.email) && (
             <>
               <span 
                 style={{
